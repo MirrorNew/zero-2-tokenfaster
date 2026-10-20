@@ -1,0 +1,881 @@
+{
+  "created_utc": "2026-10-20T15:02:16.212305+00:00",
+  "purpose": "Random-weight teaching microbenchmark; no text quality claim.",
+  "system": {
+    "python": "3.12.9",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.8.0.dev20250505+cu128",
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5080 Laptop GPU",
+    "gpu_total_memory_mib": 16302.5625
+  },
+  "config": {
+    "vocab": 4096,
+    "width": 512,
+    "layers": 4,
+    "heads": 8,
+    "max_length": 2048,
+    "dtype": "float32",
+    "decode_steps": 32,
+    "repeats": 5,
+    "warmups_per_path": 2,
+    "seed": 20261020,
+    "tf32": false,
+    "sdpa_backend": "PyTorch automatic dispatch"
+  },
+  "parameter_count": 17853440,
+  "cases": [
+    {
+      "batch": 1,
+      "prompt_tokens": 128,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 7.152557373046875e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 2.5,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 1.19868803024292,
+          "decode_total_ms": 34.01708984375,
+          "decode_ms_per_step": 1.0630340576171875,
+          "prefill_plus_decode_wall_ms": 34.984499972779304,
+          "base_allocated_mib": 78.23193359375,
+          "peak_allocated_mib": 83.6865234375,
+          "peak_increment_mib": 5.45458984375,
+          "reserved_after_run_mib": 92.0
+        },
+        "kv": {
+          "prefill_ms": 1.2780799865722656,
+          "decode_total_ms": 31.43929672241211,
+          "decode_ms_per_step": 0.9824780225753784,
+          "prefill_plus_decode_wall_ms": 32.885099994018674,
+          "base_allocated_mib": 78.23193359375,
+          "peak_allocated_mib": 84.73291015625,
+          "peak_increment_mib": 6.5009765625,
+          "reserved_after_run_mib": 92.0
+        }
+      },
+      "decode_speedup_vs_recompute": 1.0819927094457003,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 0.9580159783363342,
+            "decode_total_ms": 35.16457748413086,
+            "decode_ms_per_step": 1.0988930463790894,
+            "prefill_plus_decode_wall_ms": 36.15840000566095,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 83.6865234375,
+            "peak_increment_mib": 5.45458984375,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.19868803024292,
+            "decode_total_ms": 27.37766456604004,
+            "decode_ms_per_step": 0.8555520176887512,
+            "prefill_plus_decode_wall_ms": 28.607899992493913,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 83.6865234375,
+            "peak_increment_mib": 5.45458984375,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 0.9470080137252808,
+            "decode_total_ms": 34.01708984375,
+            "decode_ms_per_step": 1.0630340576171875,
+            "prefill_plus_decode_wall_ms": 34.984499972779304,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 83.6865234375,
+            "peak_increment_mib": 5.45458984375,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 2.2705280780792236,
+            "decode_total_ms": 45.96460723876953,
+            "decode_ms_per_step": 1.4363939762115479,
+            "prefill_plus_decode_wall_ms": 48.25890000211075,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 83.6865234375,
+            "peak_increment_mib": 5.45458984375,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.308127999305725,
+            "decode_total_ms": 29.558176040649414,
+            "decode_ms_per_step": 0.9236930012702942,
+            "prefill_plus_decode_wall_ms": 30.948799976613373,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 83.6865234375,
+            "peak_increment_mib": 5.45458984375,
+            "reserved_after_run_mib": 92.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 1.2780799865722656,
+            "decode_total_ms": 31.43929672241211,
+            "decode_ms_per_step": 0.9824780225753784,
+            "prefill_plus_decode_wall_ms": 32.74890000466257,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 84.73291015625,
+            "peak_increment_mib": 6.5009765625,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.5724480152130127,
+            "decode_total_ms": 31.278528213500977,
+            "decode_ms_per_step": 0.9774540066719055,
+            "prefill_plus_decode_wall_ms": 32.885099994018674,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 84.73291015625,
+            "peak_increment_mib": 6.5009765625,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.066815972328186,
+            "decode_total_ms": 30.25152015686035,
+            "decode_ms_per_step": 0.945360004901886,
+            "prefill_plus_decode_wall_ms": 31.35669999755919,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 84.73291015625,
+            "peak_increment_mib": 6.5009765625,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.051103949546814,
+            "decode_total_ms": 35.98575973510742,
+            "decode_ms_per_step": 1.124554991722107,
+            "prefill_plus_decode_wall_ms": 37.09220001474023,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 84.73291015625,
+            "peak_increment_mib": 6.5009765625,
+            "reserved_after_run_mib": 92.0
+          },
+          {
+            "prefill_ms": 1.6452480554580688,
+            "decode_total_ms": 38.33171081542969,
+            "decode_ms_per_step": 1.1978659629821777,
+            "prefill_plus_decode_wall_ms": 40.0149000051897,
+            "base_allocated_mib": 78.23193359375,
+            "peak_allocated_mib": 84.73291015625,
+            "peak_increment_mib": 6.5009765625,
+            "reserved_after_run_mib": 92.0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "prompt_tokens": 512,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 7.152557373046875e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 8.5,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 2.5562241077423096,
+          "decode_total_ms": 92.8532485961914,
+          "decode_ms_per_step": 2.9016640186309814,
+          "prefill_plus_decode_wall_ms": 95.2392999897711,
+          "base_allocated_mib": 78.23486328125,
+          "peak_allocated_mib": 95.8173828125,
+          "peak_increment_mib": 17.58251953125,
+          "reserved_after_run_mib": 132.0
+        },
+        "kv": {
+          "prefill_ms": 2.964576005935669,
+          "decode_total_ms": 42.34758377075195,
+          "decode_ms_per_step": 1.3233619928359985,
+          "prefill_plus_decode_wall_ms": 45.103799988282844,
+          "base_allocated_mib": 78.23486328125,
+          "peak_allocated_mib": 103.36376953125,
+          "peak_increment_mib": 25.12890625,
+          "reserved_after_run_mib": 132.0
+        }
+      },
+      "decode_speedup_vs_recompute": 2.192645726822365,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 2.201792001724243,
+            "decode_total_ms": 83.85711669921875,
+            "decode_ms_per_step": 2.620534896850586,
+            "prefill_plus_decode_wall_ms": 86.12109997193329,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 95.8173828125,
+            "peak_increment_mib": 17.58251953125,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 3.357408046722412,
+            "decode_total_ms": 103.45174407958984,
+            "decode_ms_per_step": 3.2328670024871826,
+            "prefill_plus_decode_wall_ms": 107.15180000988767,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 95.8173828125,
+            "peak_increment_mib": 17.58251953125,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 2.5562241077423096,
+            "decode_total_ms": 90.1398696899414,
+            "decode_ms_per_step": 2.816870927810669,
+            "prefill_plus_decode_wall_ms": 92.75199999683537,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 95.8173828125,
+            "peak_increment_mib": 17.58251953125,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 3.6413440704345703,
+            "decode_total_ms": 99.26646423339844,
+            "decode_ms_per_step": 3.102077007293701,
+            "prefill_plus_decode_wall_ms": 102.98670001793653,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 95.8173828125,
+            "peak_increment_mib": 17.58251953125,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 2.318272113800049,
+            "decode_total_ms": 92.8532485961914,
+            "decode_ms_per_step": 2.9016640186309814,
+            "prefill_plus_decode_wall_ms": 95.2392999897711,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 95.8173828125,
+            "peak_increment_mib": 17.58251953125,
+            "reserved_after_run_mib": 132.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 2.3181440830230713,
+            "decode_total_ms": 40.36140823364258,
+            "decode_ms_per_step": 1.2612940073013306,
+            "prefill_plus_decode_wall_ms": 42.72040000068955,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 103.36376953125,
+            "peak_increment_mib": 25.12890625,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 3.0659520626068115,
+            "decode_total_ms": 43.05712127685547,
+            "decode_ms_per_step": 1.3455350399017334,
+            "prefill_plus_decode_wall_ms": 46.4038000209257,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 103.36376953125,
+            "peak_increment_mib": 25.12890625,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 2.6118719577789307,
+            "decode_total_ms": 42.34758377075195,
+            "decode_ms_per_step": 1.3233619928359985,
+            "prefill_plus_decode_wall_ms": 45.00780001399107,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 103.36376953125,
+            "peak_increment_mib": 25.12890625,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 3.251039981842041,
+            "decode_total_ms": 41.78736114501953,
+            "decode_ms_per_step": 1.3058550357818604,
+            "prefill_plus_decode_wall_ms": 45.103799988282844,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 103.36376953125,
+            "peak_increment_mib": 25.12890625,
+            "reserved_after_run_mib": 132.0
+          },
+          {
+            "prefill_ms": 2.964576005935669,
+            "decode_total_ms": 44.23731231689453,
+            "decode_ms_per_step": 1.382416009902954,
+            "prefill_plus_decode_wall_ms": 47.24740001256578,
+            "base_allocated_mib": 78.23486328125,
+            "peak_allocated_mib": 103.36376953125,
+            "peak_increment_mib": 25.12890625,
+            "reserved_after_run_mib": 132.0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "prompt_tokens": 1024,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 7.152557373046875e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 16.5,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 6.303999900817871,
+          "decode_total_ms": 251.89404296875,
+          "decode_ms_per_step": 7.8716888427734375,
+          "prefill_plus_decode_wall_ms": 257.26190002751537,
+          "base_allocated_mib": 78.23876953125,
+          "peak_allocated_mib": 109.2001953125,
+          "peak_increment_mib": 30.96142578125,
+          "reserved_after_run_mib": 152.0
+        },
+        "kv": {
+          "prefill_ms": 8.35756778717041,
+          "decode_total_ms": 42.94636917114258,
+          "decode_ms_per_step": 1.3420740365982056,
+          "prefill_plus_decode_wall_ms": 49.06920000212267,
+          "base_allocated_mib": 78.23876953125,
+          "peak_allocated_mib": 124.74658203125,
+          "peak_increment_mib": 46.5078125,
+          "reserved_after_run_mib": 152.0
+        }
+      },
+      "decode_speedup_vs_recompute": 5.865316389493711,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 6.303999900817871,
+            "decode_total_ms": 267.6860656738281,
+            "decode_ms_per_step": 8.365189552307129,
+            "prefill_plus_decode_wall_ms": 274.2505999922287,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 109.2001953125,
+            "peak_increment_mib": 30.96142578125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 5.2987518310546875,
+            "decode_total_ms": 251.89404296875,
+            "decode_ms_per_step": 7.8716888427734375,
+            "prefill_plus_decode_wall_ms": 257.26190002751537,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 109.2001953125,
+            "peak_increment_mib": 30.96142578125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 10.667840003967285,
+            "decode_total_ms": 290.1944274902344,
+            "decode_ms_per_step": 9.068575859069824,
+            "prefill_plus_decode_wall_ms": 300.960299995495,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 109.2001953125,
+            "peak_increment_mib": 30.96142578125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 6.089471817016602,
+            "decode_total_ms": 202.6609649658203,
+            "decode_ms_per_step": 6.333155155181885,
+            "prefill_plus_decode_wall_ms": 208.91349998419173,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 109.2001953125,
+            "peak_increment_mib": 30.96142578125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 6.359807968139648,
+            "decode_total_ms": 230.29327392578125,
+            "decode_ms_per_step": 7.196664810180664,
+            "prefill_plus_decode_wall_ms": 236.76540001179092,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 109.2001953125,
+            "peak_increment_mib": 30.96142578125,
+            "reserved_after_run_mib": 152.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 8.35756778717041,
+            "decode_total_ms": 40.199710845947266,
+            "decode_ms_per_step": 1.256240963935852,
+            "prefill_plus_decode_wall_ms": 48.649200005456805,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 124.74658203125,
+            "peak_increment_mib": 46.5078125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 6.015679836273193,
+            "decode_total_ms": 43.002559661865234,
+            "decode_ms_per_step": 1.3438299894332886,
+            "prefill_plus_decode_wall_ms": 49.06920000212267,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 124.74658203125,
+            "peak_increment_mib": 46.5078125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 9.196800231933594,
+            "decode_total_ms": 42.94636917114258,
+            "decode_ms_per_step": 1.3420740365982056,
+            "prefill_plus_decode_wall_ms": 52.20740000368096,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 124.74658203125,
+            "peak_increment_mib": 46.5078125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 7.7109761238098145,
+            "decode_total_ms": 40.856319427490234,
+            "decode_ms_per_step": 1.2767599821090698,
+            "prefill_plus_decode_wall_ms": 48.62729998421855,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 124.74658203125,
+            "peak_increment_mib": 46.5078125,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 8.685440063476562,
+            "decode_total_ms": 49.15689468383789,
+            "decode_ms_per_step": 1.536152958869934,
+            "prefill_plus_decode_wall_ms": 57.90089999209158,
+            "base_allocated_mib": 78.23876953125,
+            "peak_allocated_mib": 124.74658203125,
+            "peak_increment_mib": 46.5078125,
+            "reserved_after_run_mib": 152.0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 4,
+      "prompt_tokens": 128,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 9.5367431640625e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 10.0,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 2.6997439861297607,
+          "decode_total_ms": 102.8090591430664,
+          "decode_ms_per_step": 3.212783098220825,
+          "prefill_plus_decode_wall_ms": 105.11259999475442,
+          "base_allocated_mib": 78.2353515625,
+          "peak_allocated_mib": 97.92431640625,
+          "peak_increment_mib": 19.68896484375,
+          "reserved_after_run_mib": 152.0
+        },
+        "kv": {
+          "prefill_ms": 3.075200080871582,
+          "decode_total_ms": 42.5081901550293,
+          "decode_ms_per_step": 1.3283809423446655,
+          "prefill_plus_decode_wall_ms": 45.617700001457706,
+          "base_allocated_mib": 78.2353515625,
+          "peak_allocated_mib": 104.111328125,
+          "peak_increment_mib": 25.8759765625,
+          "reserved_after_run_mib": 152.0
+        }
+      },
+      "decode_speedup_vs_recompute": 2.4185706041145743,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 2.6997439861297607,
+            "decode_total_ms": 102.3295669555664,
+            "decode_ms_per_step": 3.19779896736145,
+            "prefill_plus_decode_wall_ms": 105.10489999433048,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 97.92431640625,
+            "peak_increment_mib": 19.68896484375,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 3.312096118927002,
+            "decode_total_ms": 103.33798217773438,
+            "decode_ms_per_step": 3.229311943054199,
+            "prefill_plus_decode_wall_ms": 106.74080002354458,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 97.92431640625,
+            "peak_increment_mib": 19.68896484375,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 2.2366080284118652,
+            "decode_total_ms": 102.8090591430664,
+            "decode_ms_per_step": 3.212783098220825,
+            "prefill_plus_decode_wall_ms": 105.11259999475442,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 97.92431640625,
+            "peak_increment_mib": 19.68896484375,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 3.2587521076202393,
+            "decode_total_ms": 113.86566162109375,
+            "decode_ms_per_step": 3.5583019256591797,
+            "prefill_plus_decode_wall_ms": 117.30769998393953,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 97.92431640625,
+            "peak_increment_mib": 19.68896484375,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 2.488607883453369,
+            "decode_total_ms": 89.79481506347656,
+            "decode_ms_per_step": 2.8060879707336426,
+            "prefill_plus_decode_wall_ms": 92.35120000084862,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 97.92431640625,
+            "peak_increment_mib": 19.68896484375,
+            "reserved_after_run_mib": 152.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 3.075200080871582,
+            "decode_total_ms": 42.5081901550293,
+            "decode_ms_per_step": 1.3283809423446655,
+            "prefill_plus_decode_wall_ms": 45.617700001457706,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 104.111328125,
+            "peak_increment_mib": 25.8759765625,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 3.3959360122680664,
+            "decode_total_ms": 41.76201629638672,
+            "decode_ms_per_step": 1.305063009262085,
+            "prefill_plus_decode_wall_ms": 45.2246000058949,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 104.111328125,
+            "peak_increment_mib": 25.8759765625,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 2.7348480224609375,
+            "decode_total_ms": 41.22694396972656,
+            "decode_ms_per_step": 1.288341999053955,
+            "prefill_plus_decode_wall_ms": 44.00259998510592,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 104.111328125,
+            "peak_increment_mib": 25.8759765625,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 3.709280014038086,
+            "decode_total_ms": 46.302879333496094,
+            "decode_ms_per_step": 1.446964979171753,
+            "prefill_plus_decode_wall_ms": 50.0713000074029,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 104.111328125,
+            "peak_increment_mib": 25.8759765625,
+            "reserved_after_run_mib": 152.0
+          },
+          {
+            "prefill_ms": 2.852544069290161,
+            "decode_total_ms": 46.750816345214844,
+            "decode_ms_per_step": 1.4609630107879639,
+            "prefill_plus_decode_wall_ms": 49.72849998739548,
+            "base_allocated_mib": 78.2353515625,
+            "peak_allocated_mib": 104.111328125,
+            "peak_increment_mib": 25.8759765625,
+            "reserved_after_run_mib": 152.0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 4,
+      "prompt_tokens": 512,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 1.0728836059570312e-06,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 34.0,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 12.861151695251465,
+          "decode_total_ms": 497.1747131347656,
+          "decode_ms_per_step": 15.536709785461426,
+          "prefill_plus_decode_wall_ms": 509.25860001007095,
+          "base_allocated_mib": 78.2470703125,
+          "peak_allocated_mib": 142.06396484375,
+          "peak_increment_mib": 63.81689453125,
+          "reserved_after_run_mib": 222.0
+        },
+        "kv": {
+          "prefill_ms": 14.922783851623535,
+          "decode_total_ms": 30.26700782775879,
+          "decode_ms_per_step": 0.9458439946174622,
+          "prefill_plus_decode_wall_ms": 45.305100007681176,
+          "base_allocated_mib": 78.2470703125,
+          "peak_allocated_mib": 172.2509765625,
+          "peak_increment_mib": 94.00390625,
+          "reserved_after_run_mib": 222.0
+        }
+      },
+      "decode_speedup_vs_recompute": 16.426292151640826,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 12.861151695251465,
+            "decode_total_ms": 493.75653076171875,
+            "decode_ms_per_step": 15.429891586303711,
+            "prefill_plus_decode_wall_ms": 506.67329999851063,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 142.06396484375,
+            "peak_increment_mib": 63.81689453125,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 10.84768009185791,
+            "decode_total_ms": 426.7426452636719,
+            "decode_ms_per_step": 13.335707664489746,
+            "prefill_plus_decode_wall_ms": 437.6468999835197,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 142.06396484375,
+            "peak_increment_mib": 63.81689453125,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 13.403103828430176,
+            "decode_total_ms": 551.5254516601562,
+            "decode_ms_per_step": 17.235170364379883,
+            "prefill_plus_decode_wall_ms": 565.0084000080824,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 142.06396484375,
+            "peak_increment_mib": 63.81689453125,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 12.024191856384277,
+            "decode_total_ms": 497.1747131347656,
+            "decode_ms_per_step": 15.536709785461426,
+            "prefill_plus_decode_wall_ms": 509.25860001007095,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 142.06396484375,
+            "peak_increment_mib": 63.81689453125,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 15.226943969726562,
+            "decode_total_ms": 500.5905456542969,
+            "decode_ms_per_step": 15.643454551696777,
+            "prefill_plus_decode_wall_ms": 515.9090000088327,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 142.06396484375,
+            "peak_increment_mib": 63.81689453125,
+            "reserved_after_run_mib": 222.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 14.922783851623535,
+            "decode_total_ms": 30.26700782775879,
+            "decode_ms_per_step": 0.9458439946174622,
+            "prefill_plus_decode_wall_ms": 45.305100007681176,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 172.2509765625,
+            "peak_increment_mib": 94.00390625,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 13.496864318847656,
+            "decode_total_ms": 38.681217193603516,
+            "decode_ms_per_step": 1.2087880373001099,
+            "prefill_plus_decode_wall_ms": 52.23649999243207,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 172.2509765625,
+            "peak_increment_mib": 94.00390625,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 16.518367767333984,
+            "decode_total_ms": 31.434751510620117,
+            "decode_ms_per_step": 0.9823359847068787,
+            "prefill_plus_decode_wall_ms": 48.00869998871349,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 172.2509765625,
+            "peak_increment_mib": 94.00390625,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 13.690496444702148,
+            "decode_total_ms": 27.3670711517334,
+            "decode_ms_per_step": 0.8552209734916687,
+            "prefill_plus_decode_wall_ms": 41.10309999668971,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 172.2509765625,
+            "peak_increment_mib": 94.00390625,
+            "reserved_after_run_mib": 222.0
+          },
+          {
+            "prefill_ms": 15.522591590881348,
+            "decode_total_ms": 29.63654327392578,
+            "decode_ms_per_step": 0.9261419773101807,
+            "prefill_plus_decode_wall_ms": 45.23160000098869,
+            "base_allocated_mib": 78.2470703125,
+            "peak_allocated_mib": 172.2509765625,
+            "peak_increment_mib": 94.00390625,
+            "reserved_after_run_mib": 222.0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 4,
+      "prompt_tokens": 1024,
+      "decode_steps": 32,
+      "correctness": {
+        "allclose": true,
+        "max_abs_logit_error": 9.5367431640625e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "positions_checked": 33
+      },
+      "kv_cache_capacity_mib": 66.0,
+      "median": {
+        "no_kv": {
+          "prefill_ms": 27.075551986694336,
+          "decode_total_ms": 1154.84375,
+          "decode_ms_per_step": 36.0888671875,
+          "prefill_plus_decode_wall_ms": 1180.1471000071615,
+          "base_allocated_mib": 78.2626953125,
+          "peak_allocated_mib": 204.08349609375,
+          "peak_increment_mib": 125.82080078125,
+          "reserved_after_run_mib": 378.0
+        },
+        "kv": {
+          "prefill_ms": 27.79190444946289,
+          "decode_total_ms": 43.79849624633789,
+          "decode_ms_per_step": 1.368703007698059,
+          "prefill_plus_decode_wall_ms": 71.66690001031384,
+          "base_allocated_mib": 78.2626953125,
+          "peak_allocated_mib": 264.2705078125,
+          "peak_increment_mib": 186.0078125,
+          "reserved_after_run_mib": 378.0
+        }
+      },
+      "decode_speedup_vs_recompute": 26.367200908103314,
+      "raw_runs": {
+        "no_kv": [
+          {
+            "prefill_ms": 25.228639602661133,
+            "decode_total_ms": 1154.84375,
+            "decode_ms_per_step": 36.0888671875,
+            "prefill_plus_decode_wall_ms": 1180.1471000071615,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 204.08349609375,
+            "peak_increment_mib": 125.82080078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 32.800926208496094,
+            "decode_total_ms": 1096.853515625,
+            "decode_ms_per_step": 34.27667236328125,
+            "prefill_plus_decode_wall_ms": 1129.755000001751,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 204.08349609375,
+            "peak_increment_mib": 125.82080078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 25.970111846923828,
+            "decode_total_ms": 1186.4410400390625,
+            "decode_ms_per_step": 37.0762825012207,
+            "prefill_plus_decode_wall_ms": 1212.4967999989167,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 204.08349609375,
+            "peak_increment_mib": 125.82080078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 33.63334274291992,
+            "decode_total_ms": 1186.429931640625,
+            "decode_ms_per_step": 37.07593536376953,
+            "prefill_plus_decode_wall_ms": 1220.1494999753777,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 204.08349609375,
+            "peak_increment_mib": 125.82080078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 27.075551986694336,
+            "decode_total_ms": 1099.7227783203125,
+            "decode_ms_per_step": 34.366336822509766,
+            "prefill_plus_decode_wall_ms": 1126.8840999982785,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 204.08349609375,
+            "peak_increment_mib": 125.82080078125,
+            "reserved_after_run_mib": 378.0
+          }
+        ],
+        "kv": [
+          {
+            "prefill_ms": 26.8110408782959,
+            "decode_total_ms": 40.812255859375,
+            "decode_ms_per_step": 1.2753829956054688,
+            "prefill_plus_decode_wall_ms": 67.70110002253205,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 264.2705078125,
+            "peak_increment_mib": 186.0078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 34.24995040893555,
+            "decode_total_ms": 44.13024139404297,
+            "decode_ms_per_step": 1.3790700435638428,
+            "prefill_plus_decode_wall_ms": 78.46710001467727,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 264.2705078125,
+            "peak_increment_mib": 186.0078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 26.158784866333008,
+            "decode_total_ms": 41.49856185913086,
+            "decode_ms_per_step": 1.2968300580978394,
+            "prefill_plus_decode_wall_ms": 67.73219999740832,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 264.2705078125,
+            "peak_increment_mib": 186.0078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 37.9218864440918,
+            "decode_total_ms": 47.836097717285156,
+            "decode_ms_per_step": 1.4948780536651611,
+            "prefill_plus_decode_wall_ms": 85.85440000751987,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 264.2705078125,
+            "peak_increment_mib": 186.0078125,
+            "reserved_after_run_mib": 378.0
+          },
+          {
+            "prefill_ms": 27.79190444946289,
+            "decode_total_ms": 43.79849624633789,
+            "decode_ms_per_step": 1.368703007698059,
+            "prefill_plus_decode_wall_ms": 71.66690001031384,
+            "base_allocated_mib": 78.2626953125,
+            "peak_allocated_mib": 264.2705078125,
+            "peak_increment_mib": 186.0078125,
+            "reserved_after_run_mib": 378.0
+          }
+        ]
+      }
+    }
+  ]
+}
