@@ -1,5 +1,7 @@
 # 训练与推理优化：用一条链路串起基础
 
+如果 X/Q/K/V、缓存、服务框架或性能测试仍不清楚，先看 [逐项白话解释与手算例子](FOUNDATIONS_EXPLAINED.md)，再回来读本页。
+
 ## 1. 先把模型运行过程画出来
 
 ```text
@@ -68,7 +70,7 @@ KV cache 保存各层历史 token 的 K/V。因果结构下，旧位置不会因
 
 例：完整前缀重算会重复计算旧 token 的 embedding 后各层变换；缓存路径只计算新增位置，再读历史状态。两条路径输出应在合理浮点误差内一致。机制见 [Hugging Face 缓存解释](https://huggingface.co/docs/transformers/cache_explanation)。
 
-普通全注意力/GQA 的近似 KV 占用：
+对于使用标准 K/V 缓存、保留全部历史 token 的 MHA（普通多头注意力）或 GQA（分组查询注意力）模型，缓存占用可以这样估算。“保留哪些位置”和“多少个 Q 头共享 K/V”是两个不同问题，GQA 也可以看全部历史：
 
 `bytes = 2 × layers × batch × cached_tokens × KV_heads × head_dim × bytes_per_element`
 
